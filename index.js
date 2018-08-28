@@ -63,12 +63,12 @@ bot.on("message", async message => {
     .setFooter("by ๖̶̶̶ζ͜͡Kociak 💞#6365")
     message.channel.send(embed)
   }
-    if(message.content === "|Tamcia") {
+    if(message.content === "|tamcia") {
     const eeeembed = new Discord.RichEmbed()
     .setTitle(`Ty... Słuchaj **${message.author.tag}**`)
     .setColor('RANDOM')
-    .addfield("informacje", "Tamcia nie jest dziwką i się nie puszcza. Radzę ci się ogarnąć!")
-    .setFooter("Niestety będzie tylko jedno zdjęcie/gif ponieważ nie mam api i nie ogarnąłem jeszcze array (z góry przepraszam)")
+    .addfield("informacje", "Tamcia nie jest dziwką i się nie puszcza. Radzę ci się ogarnąć! bo jej chłopak kociak cie dopadnie!")
+    .setFooter("Niestety będzie tylko jedno zdjęcie/gif ponieważ nie mam api i nie ogarnąłem jeszcze array (z góry przepraszam)");
     message.channel.send(eeeembed)
   }
 });
