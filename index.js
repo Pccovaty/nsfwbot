@@ -43,12 +43,12 @@ bot.on("message", async message => {
   }
      if(cmd === "|sex_tamcia") {
     if (!message.channel.nsfw) return message.channel.send(":underage: jest to NSFW komenda. Proszę zaznacz w ustawieniach kanału NSFW ON bym mógł dać png/gif")
-    const embed = new Discord.RichEmbed()
+    const eeeembed = new Discord.RichEmbed()
     .setTitle(`Ty... Słuchaj **${message.author.tag}**`)
     .setColor('RANDOM')
     .addfield("informacje", "Tamcia nie jest dziwką i się nie puszcza. Radzę ci się ogarnąć!")
     .setFooter("Niestety będzie tylko jedno zdjęcie/gif ponieważ nie mam api i nie ogarnąłem jeszcze array (z góry przepraszam)")
-    message.channel.send(embed)
+    message.channel.send(eeeembed)
   }
   if(cmd === "|help") {
     const bicon = bot.user.displayAvatarURL;
