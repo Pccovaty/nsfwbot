@@ -52,6 +52,17 @@ bot.on("message", async message => {
     .setFooter("masz problem z botem? wejdź w ten link https://discord.gg/pppgZCV")
     message.channel.send(embed)
   }
+    if(cmd === "|botinfo") {
+    const bicon = bot.user.displayAvatarURL;
+    const embed = new Discord.RichEmbed()
+    .setTitle("Informacje dotyczące bota")
+    .setColor('RANDOM')
+    .setThumbnail(bicon)
+    .addField("Serwerów:", `${bot.guilds.size}`)
+    .addField("Łącznie osób:", `${bot.users.size}`)
+    .setFooter("masz problem z botem? wejdź w ten link https://discord.gg/pppgZCV")
+    message.channel.send(embed)
+  }
 });
 
 bot.login(process.env.BOT_TOKEN);
