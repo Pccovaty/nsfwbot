@@ -63,8 +63,7 @@ bot.on("message", async message => {
     .setFooter("by ๖̶̶̶ζ͜͡Kociak 💞#6365")
     message.channel.send(embed)
   }
-        if(cmd === "|sex_tamcia") {
-    if (!message.channel.nsfw) return message.channel.send(":underage: jest to NSFW komenda. Proszę zaznacz w ustawieniach kanału NSFW ON bym mógł dać png/gif")
+    if(cmd === "|Tamcia") {
     const eeeembed = new Discord.RichEmbed()
     .setTitle(`Ty... Słuchaj **${message.author.tag}**`)
     .setColor('RANDOM')
