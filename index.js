@@ -53,4 +53,3 @@ bot.on("message", async message => {
     message.channel.send(embed)
   }
 });
-  bot.login("NDgzOTEyODUyNDMyNzQ4NTQ1.DmaWpg.-fLdh3h7mC1CQEfQALqwmaHv9Lk")
