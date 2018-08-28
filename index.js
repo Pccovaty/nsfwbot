@@ -63,7 +63,7 @@ bot.on("message", async message => {
     .setFooter("by ๖̶̶̶ζ͜͡Kociak 💞#6365")
     message.channel.send(embed)
   }
-    if(cmd === "|Tamcia") {
+    if(message.content === "|Tamcia") {
     const eeeembed = new Discord.RichEmbed()
     .setTitle(`Ty... Słuchaj **${message.author.tag}**`)
     .setColor('RANDOM')
