@@ -23,6 +23,14 @@ bot.on("message", async message => {
     .setFooter("Niestety będzie tylko jedno zdjęcie/gif ponieważ nie mam api i nie ogarnąłem jeszcze array (z góry przepraszam)")
     message.channel.send(embed)
   }
+  if(cmd === "|tamcia") {
+    const eeeembed = new Discord.RichEmbed()
+    .setTitle(`Ty... Słuchaj **${message.author.tag}**`)
+    .setColor('RANDOM')
+    .addField("informacje", "Tamcia nie jest dziwką i się nie puszcza. Radzę ci się ogarnąć! bo jej chłopak kociak cie dopadnie!")
+    .setFooter("Niestety będzie tylko jedno zdjęcie/gif ponieważ nie mam api i nie ogarnąłem jeszcze array (z góry przepraszam)");
+    message.channel.send(eeeembed)
+  }
   if(cmd === "|hentai_sex") {
     if (!message.channel.nsfw) return message.channel.send(":underage: jest to NSFW komenda. Proszę zaznacz w ustawieniach kanału NSFW ON bym mógł dać png/gif")
     const embed = new Discord.RichEmbed()
@@ -62,14 +70,6 @@ bot.on("message", async message => {
     .addField("Łącznie osób:", `${bot.users.size}`)
     .setFooter("by ๖̶̶̶ζ͜͡Kociak 💞#6365")
     message.channel.send(embed)
-  }
-    if(message.content === "|tamcia") {
-    const eeeembed = new Discord.RichEmbed()
-    .setTitle(`Ty... Słuchaj **${message.author.tag}**`)
-    .setColor('RANDOM')
-    .addfield("informacje", "Tamcia nie jest dziwką i się nie puszcza. Radzę ci się ogarnąć! bo jej chłopak kociak cie dopadnie!")
-    .setFooter("Niestety będzie tylko jedno zdjęcie/gif ponieważ nie mam api i nie ogarnąłem jeszcze array (z góry przepraszam)");
-    message.channel.send(eeeembed)
   }
 });
 
