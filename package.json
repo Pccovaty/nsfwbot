@@ -1,0 +1,15 @@
+{
+  "name": "sexbot",
+  "version": "1.0.0",
+  "description": "nsfwbot",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Kociak",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^11.4.2",
+    "randomimage": "^10.0.0"
+  }
+}
