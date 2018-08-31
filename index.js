@@ -4,8 +4,8 @@ bot.commands = new Discord.Collection();
 
 bot.on("ready", async() => {
 
-    console.log(`${bot.user.username} is online on ${bot.guilds.size} servers!`);
-    bot.user.setActivity(`${bot.users.size} użytkowników `, {type: "WATCHING"});
+  console.log(`${bot.user.username} is online on ${bot.guilds.size} servers!`);
+  bot.user.setActivity("by ๖̶̶̶ζ͜͡Kociak 💞#6365", {type: "WATCHING"});
 });
 bot.on("message", async message => {
     if(message.author.bot) return;
