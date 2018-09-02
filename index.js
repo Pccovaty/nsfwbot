@@ -71,6 +71,15 @@ bot.on("message", async message => {
     .setFooter("by ๖̶̶̶ζ͜͡Kociak 💞#6365")
     message.channel.send(embed)
   }
+  if(cmd === "|yamek"){
+     if (!message.channel.nsfw) return message.channel.send(":underage: jest to NSFW komenda. Proszę zaznacz w ustawieniach kanału NSFW ON bym mógł dać png/gif")
+const embed = new Discord.RichEmbed()
+.setTitle("Maly Yamek")
+.setColor('RANDOM')
+.setImage("https://media.discordapp.net/attachments/477909794569846804/485802614827515906/received_2142859212640876.gif")
+
+message.channel.send(embed)
+}
 });
 
 bot.login(process.env.BOT_TOKEN);
