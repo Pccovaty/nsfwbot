@@ -1,85 +1,114 @@
+const botconfig = require("./botconfig.json");
 const Discord = require('discord.js');
+const fs = require("fs");
 const bot = new Discord.Client({disableEveryone: true});
 bot.commands = new Discord.Collection();
+bot.mutes = [];
 
-bot.on("ready", async() => {
 
-  console.log(`${bot.user.username} is online on ${bot.guilds.size} servers!`);
-  bot.user.setActivity("by ๖̶̶̶ζ͜͡Kociak 💞#6365", {type: "WATCHING"});
+
+
+
+fs.readdir("./komendy/", (err, files) => {
+
+  if (err) console.log(err);
+  const jsfile = files.filter(f => f.split(".").pop() === "js");
+  if (jsfile.length <= 0) {
+    console.log("Nie znaleziono komendy");
+    return;
+  }
+
+  jsfile.forEach((f, i) => {
+    const props = require(`./komendy/${f}`);
+    console.log(`${f} loaded!`);
+    bot.commands.set(props.help.name, props);
+  });
+});
+
+
+bot.on(`message`, async message => {
+  if(message.content ===  `/reboot`) { 
+if (message.author.id === "340557425511759892") {
+  message.channel.send(":gear: ponowne uruchamianie...")
+  
+  bot.destroy()
+  bot.login(process.env.TOKEN)
+message.channel.send(":gear: ponownne uruchamianie...")
+} else {
+	
+message.channel.send("Tylko Autor bota moze uzyc tej komendy.")
+  
+  }
+  }
 });
 bot.on("message", async message => {
-    if(message.author.bot) return;
-    if(message.channel.type === "dm") return;
-    let messageArray = message.content.split(" ");
-    let cmd = messageArray[0];
-    let args = messageArray.slice(1);
-
- if(cmd === "|hentai_cycki") {
-    if (!message.channel.nsfw) return message.channel.send(":underage: jest to NSFW komenda. Proszę zaznacz w ustawieniach kanału NSFW ON bym mógł dać png/gif")
-    const embed = new Discord.RichEmbed()
-    .setTitle("Hentai o kategorii: Cycki")
-    .setColor('RANDOM')
-    .setImage("http://tn2.suitemovies.com/thumbs/320/815/6509815.jpg")
-    .setFooter("Niestety będzie tylko jedno zdjęcie/gif ponieważ nie mam api i nie ogarnąłem jeszcze array (z góry przepraszam)")
-    message.channel.send(embed)
-  }
-  if(cmd === "|tamcia") {
-    const eeeembed = new Discord.RichEmbed()
-    .setTitle(`Ty... Słuchaj **${message.author.tag}**`)
-    .setColor('RANDOM')
-    .addField("informacje", "Tamcia nie jest dziwką i się nie puszcza. Radzę ci się ogarnąć! bo jej chłopak kociak cie dopadnie!")
-    .setFooter("Niestety będzie tylko jedno zdjęcie/gif ponieważ nie mam api i nie ogarnąłem jeszcze array (z góry przepraszam)");
-    message.channel.send(eeeembed)
-  }
-  if(cmd === "|hentai_sex") {
-    if (!message.channel.nsfw) return message.channel.send(":underage: jest to NSFW komenda. Proszę zaznacz w ustawieniach kanału NSFW ON bym mógł dać png/gif")
-    const embed = new Discord.RichEmbed()
-    .setTitle("Hentai o kategorii: sex")
-    .setColor('RANDOM')
-    .setImage("https://images.sex.com/images/pinporn/2018/08/17/620/19848323.gif")
-    .setFooter("Niestety będzie tylko jedno zdjęcie/gif ponieważ nie mam api i nie ogarnąłem jeszcze array (z góry przepraszam)")
-    message.channel.send(embed)
-  }
-  if(cmd === "|hentai_dick") {
-    if (!message.channel.nsfw) return message.channel.send(":underage: jest to NSFW komenda. Proszę zaznacz w ustawieniach kanału NSFW ON bym mógł dać png/gif")
-    const embed = new Discord.RichEmbed()
-    .setTitle("Hentai o kategorii: dick")
-    .setColor('RANDOM')
-    .setImage("http://besthentaipics.com/plog-content/images/best-hentai-pictures/hentai-gifs/big-cock-and-two-hentai-babes.gif")
-    .setFooter("Niestety będzie tylko jedno zdjęcie/gif ponieważ nie mam api i nie ogarnąłem jeszcze array (z góry przepraszam)")
-    message.channel.send(embed)
-  }
-  if(cmd === "|help") {
+  if (message.content === "<@539852424068988928>") {
     const bicon = bot.user.displayAvatarURL;
     const embed = new Discord.RichEmbed()
-    .setTitle("Szybka pomoc")
-    .setColor('RANDOM')
     .setThumbnail(bicon)
-    .setDescription("komendy: \n \n |hentai_cycki \n |hentai_sex \n |hentai_dick \n |help")
-    .addField("chcesz dodać bota na serwer? nic trudnego! wystarczy że odwiedzisz ten link, zaznaczysz serwer i autoryzuj! I gotowe!", ":link: https://discordapp.com/oauth2/authorize?client_id=483912852432748545&scope=bot&permissions=335560766")
-    .setFooter("masz problem z botem? wejdź w ten link https://discord.gg/pppgZCV")
+    .setTitle("Informacje o Bocie Serwery Discord")
+    .setColor("BLUE")
+    .setTimestamp()
+    .addField("Informacje", "Prefix bota to ``/``. Aktualnie posiadamy komend ``3``.")
+    .addField("O nas", "Jesteśmy listą serwerów discord o różnych tematykach. Znaleźć możesz u nas serwery Anime, Społeczności, Gamingowe i inne oraz zgłosić swój własny serwer! Nie jest to trudne, aczkolwiek wymaga poświęcenia od 1-3 minut.")
+    .addField("\🔗 Przydatne Linki", "[Zaproszenie serwera](https://discord.gg/NaWTakw) | Tu coś będzie")
+    .setFooter(`Komenda użyta przez ${message.author.tag}`, message.author.avatarURL)
     message.channel.send(embed)
   }
-    if(cmd === "|botinfo") {
-    const bicon = bot.user.displayAvatarURL;
-    const embed = new Discord.RichEmbed()
-    .setTitle("Informacje dotyczące bota")
-    .setColor('RANDOM')
-    .setThumbnail(bicon)
-    .addField("Serwerów:", `${bot.guilds.size}`)
-    .addField("Łącznie osób:", `${bot.users.size}`)
-    .setFooter("by ๖̶̶̶ζ͜͡Kociak 💞#6365")
-    message.channel.send(embed)
-  }
-  if(cmd === "|yamek"){
-     if (!message.channel.nsfw) return message.channel.send(":underage: jest to NSFW komenda. Proszę zaznacz w ustawieniach kanału NSFW ON bym mógł dać png/gif")
-const embed = new Discord.RichEmbed()
-.setTitle("Maly Yamek")
-.setColor('RANDOM')
-.setImage("https://media.discordapp.net/attachments/477909794569846804/485802614827515906/received_2142859212640876.gif")
 
-message.channel.send(embed)
-}
+});
+
+bot.on("ready", async() => {
+      setInterval(async () => {
+    const statuslist = [
+      `Dołącz do nas!`,
+      `/help`,
+      `To cie nic nie kosztuje!`
+    ];
+    const random = Math.floor(Math.random() * statuslist.length);
+
+    try {
+      await bot.user.setPresence({
+        game: {
+          name: `${statuslist[random]}`,
+          type: "WATCHING"
+          //url: 'https://www.twitch.tv/spokloo'
+        },
+        status: "dnd"
+      });
+    } catch (error) {
+      console.error(error);
+    }
+  }, 60000);
+
+ });
+ bot.on("message", async message => {
+ 
+  if (message.author.bot) return;
+  if (message.channel.type === "dm") return;
+
+  const prefixes = JSON.parse(fs.readFileSync("./prefixes.json", "utf8"));
+  if (!prefixes[message.guild.id]) {
+    prefixes[message.guild.id] = {
+      prefixes: botconfig.prefix
+    };
+ 
+  }
+
+ 
+
+ 
+  const prefix = prefixes[message.guild.id].prefixes;
+
+  const messageArray = message.content.split(" ");
+  const cmd = messageArray[0];
+  const args = messageArray.slice(1);
+  if(cmd.substring(0, prefix.length) != prefix){
+    return;
+  }
+  const commandfile = bot.commands.get(cmd.slice(prefix.length));
+  if (commandfile) commandfile.run(bot, message, args);
+
 });
 
 bot.login(process.env.BOT_TOKEN);
